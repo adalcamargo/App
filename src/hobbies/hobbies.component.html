@@ -1,0 +1,50 @@
+<mat-toolbar class="custom-toolbar">
+  <div class="toolbar-content">
+    <div class="branding">
+      <mat-icon>favorite</mat-icon>
+      <span class="app-name">Mis Preferencias</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a mat-button routerLink="/likes" routerLinkActive="active-link">
+        <mat-icon>thumb_up</mat-icon>
+        <span>Gustos</span>
+      </a>
+      <a mat-button routerLink="/hobbies" routerLinkActive="active-link">
+        <mat-icon>sports_esports</mat-icon>
+        <span>Pasatiempos</span>
+      </a>
+      <a mat-button routerLink="/subjects" routerLinkActive="active-link">
+        <mat-icon>school</mat-icon>
+        <span>Materias</span>
+      </a>
+    </nav>
+  </div>
+</mat-toolbar>
+
+<div class="container">
+  <h1 class="page-title">
+    <mat-icon>directions_run</mat-icon>
+    Mis Actividades Favoritas
+  </h1>
+  
+  <div class="card-grid">
+    <mat-card *ngFor="let hobby of hobbies" class="hobby-card" [style.border-top]="'5px solid ' + hobby.color">
+      <mat-card-header>
+        <mat-icon mat-card-avatar [style.color]="hobby.color">{{hobby.icon}}</mat-icon>
+        <mat-card-title>{{hobby.name}}</mat-card-title>
+        <mat-card-subtitle>{{hobby.time || 'Regularmente'}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <p>{{hobby.description}}</p>
+        <div class="benefits" *ngIf="hobby.benefits">
+          <h4>Beneficios:</h4>
+          <ul>
+            <li *ngFor="let benefit of hobby.benefits">{{benefit}}</li>
+          </ul>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

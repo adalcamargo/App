@@ -1,0 +1,48 @@
+<mat-toolbar class="custom-toolbar">
+  <div class="toolbar-content">
+    <div class="branding">
+      <mat-icon>favorite</mat-icon>
+      <span class="app-name">Mis Preferencias</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a mat-button routerLink="/likes" routerLinkActive="active-link">
+        <mat-icon>thumb_up</mat-icon>
+        <span>Gustos</span>
+      </a>
+      <a mat-button routerLink="/hobbies" routerLinkActive="active-link">
+        <mat-icon>sports_esports</mat-icon>
+        <span>Pasatiempos</span>
+      </a>
+      <a mat-button routerLink="/subjects" routerLinkActive="active-link">
+        <mat-icon>school</mat-icon>
+        <span>Materias</span>
+      </a>
+    </nav>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <h1 class="page-title">
+    <mat-icon>thumb_up</mat-icon>
+    Lo que me gusta hacer
+  </h1>
+
+  <div class="card-grid">
+    <mat-card *ngFor="let category of categories" class="category-card" [style.border-top]="'5px solid ' + category.color">
+      <mat-card-header>
+        <mat-icon mat-card-avatar [style.color]="category.color">{{ category.icon }}</mat-icon>
+        <mat-card-title>{{ category.name }}</mat-card-title>
+        <mat-card-subtitle>{{category.items.length}} elementos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="items-container">
+          <div *ngFor="let item of category.items" class="item-chip" [style.background]="category.lightColor">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.name }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
